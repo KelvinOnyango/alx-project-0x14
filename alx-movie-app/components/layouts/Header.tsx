@@ -1,33 +1,47 @@
 import Link from "next/link";
-import React from "react";
+import Button from "../commons/Button";
 
 const Header: React.FC = () => {
   return (
-    <header className="bg-gray-900 text-white py-4 shadow-md">
-      <div className="container mx-auto px-4 flex justify-between items-center">
+    <header className="h-28 flex items-center bg-[#171D22] px-4 md:px-16 lg:px-44 text-white sticky top-0 z-50">
+      <div className="flex items-center justify-between w-full">
         <Link
           href="/"
-          className="text-2xl font-bold hover:text-blue-400 transition-colors"
+          className="text-xl md:text-4xl font-semibold hover:text-[#E2D609] transition-colors"
         >
-          ALX MovieApp
+          Cine<span className="text-[#E2D609]">Seek</span>
         </Link>
-        <nav className="flex space-x-6">
+
+        <nav className="hidden md:flex flex-1 justify-center space-x-8">
+          <Link
+            href="/"
+            className="hover:text-[#E2D609] px-4 md:px-8 text-xl transition-colors duration-300 font-semibold"
+          >
+            Home
+          </Link>
           <Link
             href="/movies"
-            className="hover:text-blue-400 transition-colors"
+            className="hover:text-[#E2D609] px-4 md:px-8 text-xl transition-colors duration-300 font-semibold"
           >
             Movies
           </Link>
           <Link
-            href="/favorites"
-            className="hover:text-blue-400 transition-colors"
+            href="/contact"
+            className="hover:text-[#E2D609] px-4 md:px-8 text-xl transition-colors duration-300 font-semibold"
           >
-            Favorites
-          </Link>
-          <Link href="/about" className="hover:text-blue-400 transition-colors">
-            About
+            Contact
           </Link>
         </nav>
+
+        <div className="flex items-center space-x-4">
+          <div className="md:hidden">
+            {/* Mobile menu button would go here */}
+          </div>
+          <Button
+            title="Sign in"
+            action={() => console.log("Sign in clicked")}
+          />
+        </div>
       </div>
     </header>
   );
