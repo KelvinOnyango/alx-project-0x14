@@ -7,4 +7,31 @@ export interface ComponentProps {
 export interface ButtonProps {
   title: string;
   action?: () => void;
+  disabled?: boolean;
+}
+
+export interface MovieProps {
+  id?: string;
+  posterImage: string;
+  releaseYear: string;
+  title: string;
+}
+
+interface PrimaryImage {
+  url: string;
+}
+
+interface TitleText {
+  text: string;
+}
+
+interface ReleaseYear {
+  year: string;
+}
+
+export interface MoviesProps {
+  id: string;
+  primaryImage?: PrimaryImage;
+  titleText: TitleText;
+  releaseYear?: ReleaseYear;
 }

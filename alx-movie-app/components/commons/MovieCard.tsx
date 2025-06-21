@@ -1,34 +1,31 @@
-import React from "react";
+import { MovieProps } from "@/interfaces";
+import Image from "next/image";
+import Link from "next/link";
 
-interface MovieCardProps {
-  title: string;
-  posterPath: string;
-  releaseDate: string;
-  rating: number;
-  onClick?: () => void;
-}
-
-const MovieCard: React.FC<MovieCardProps> = ({
+const MovieCard: React.FC<MovieProps> = ({
+  id,
   title,
-  posterPath,
-  releaseDate,
-  rating,
-  onClick,
+  posterImage,
+  releaseYear,
 }) => {
   return (
-    <div
-      onClick={onClick}
-      className="rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
-    >
-      <img src={posterPath} alt={title} className="w-full h-64 object-cover" />
-      <div className="p-4">
-        <h3 className="font-bold text-lg mb-1 truncate">{title}</h3>
-        <div className="flex justify-between items-center text-sm text-gray-600">
-          <span>{new Date(releaseDate).getFullYear()}</span>
-          <span className="flex items-center">⭐ {rating.toFixed(1)}</span>
+    <Link href={`/movies/${id}`} className="group">
+      <div className="h-[563px] transition-transform duration-300 hover:scale-105">
+        <div className="relative h-[430px] w-full overflow-hidden rounded-md">
+          <Image
+            src={posterImage || "/placeholder-movie.jpg"}
+            alt={title}
+            fill
+            className="object-cover transition-opacity duration-300 group-hover:opacity-80"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </div>
+        <div className="flex justify-between py-4">
+          <p className="text-xl font-bold truncate max-w-[70%]">{title}</p>
+          <p className="text-xl text-[#E2D609]">{releaseYear}</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
